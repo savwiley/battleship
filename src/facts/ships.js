@@ -1,6 +1,8 @@
 import gameboard from "./gameboard.js";
 import shipList from "../data/shipList.json";
 
+//this file changes the ship objects in the data folder
+
 const Ships = (ship, mark) => {
 
   //grab the ship
@@ -9,10 +11,9 @@ const Ships = (ship, mark) => {
   //hit the ship
   const hit = shipArr[0]["targets"].findIndex((e) => e === mark);
   shipArr[0]["targets"].splice(hit, 1);
-  shipArr[0]["hits"]++;
 
   //sink ship
-  if (shipArr[0]["hits"] === shipArr[0]["length"]) {
+  if (shipArr[0]["targets"].length < 1) {
     shipArr[0]["sunk"] = true;
   };
 
