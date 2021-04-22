@@ -5,7 +5,6 @@ import shipList from "../data/shipList.json";
 
 const gameboard = (ship, action, x, y) => {
   //when there's a miss, the 'ship' param is undefined
-  //should i find if the hit is an attack/miss here or elsewhere?
 
   //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
@@ -31,25 +30,24 @@ const gameboard = (ship, action, x, y) => {
       }
     }
   } else if (action === "attack") {
-    //find index of coord & use it as the mark
+    //finds index of coord & uses it as the mark
     const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
     Ships(ship, attIndex)
   } else if (action === "miss") {
     //do something to the coord block
+    //perhaps add this coord to another array somewhere, too?
   }
   
-  //x = "B";
-  //y = "3";
-  //perhaps I should combine them in one parameter like "3B"
-  // >> combining them would mean making links for each block instead of tracking by row and column. but how do I do that??s
   // x = A-E; y = 1-5
   // x left/right (letters), y up/down (numbers)
 
 
   /*
-  Gameboards should be able to place ships at specific coordinates by calling the ship factory function.
-
   Gameboards should have a receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
+
+  Gameboards should keep track of missed attacks so they can display them properly.
+
+  Gameboards should be able to report whether or not all of their ships have been sunk.
   */
 
 
