@@ -10,3 +10,7 @@ function App() {
 }
 
 export default App;
+
+/**
+ * https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/battleship
+ */
