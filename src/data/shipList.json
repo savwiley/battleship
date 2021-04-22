@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Carrier",
+    "length": 5,
+    "coords": [],
+    "targets": [ 1, 2, 3, 4, 5 ],
+    "hits": 0,
+    "sunk": false
+  },
+  {
+    "name": "Battleship",
+    "length": 4,
+    "coords": [],
+    "targets": [ 1, 2, 3, 4 ],
+    "hits": 0,
+    "sunk": false
+  },
+  {
+    "name": "Destroyer",
+    "length": 3,
+    "coords": [],
+    "targets": [ 1, 2, 3 ],
+    "hits": 0,
+    "sunk": false
+  },
+  {
+    "name": "Submarine",
+    "length": 3,
+    "coords": [],
+    "targets": [ 1, 2, 3 ],
+    "hits": 0,
+    "sunk": false
+  },
+  {
+    "name": "Patrol Boat",
+    "length": 2,
+    "coords": [],
+    "targets": [ 1, 2 ],
+    "hits": 0,
+    "sunk": false
+  }
+]
