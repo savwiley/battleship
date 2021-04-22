@@ -4,22 +4,26 @@ import shipList from "../data/shipList.json";
 //this file processes clicks, deciphers action, and sends commands accordingly
 
 const gameboard = (ship, action, x, y) => {
+  //when there's a miss, the 'ship' param is undefined
+  //should i find if the hit is an attack/miss here or elsewhere?
 
   //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
   //X array
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
-
-  // shipArr[0][""]
+  //A1 = A + 1
+  const coord = x + y;
+  
+  let vertical = false;
+  //create conditional statement to change vertical using a btn or smth
 
   if (action === "place") {
-    //make directional placement parameter
-    if (/*up/down*/) {
+    if (vertical) {
       for (let i = y; i <= shipArr[0]["length"]; i++) {
         const yCoord = x + i; //produces A1
         shipArr[0]["coords"].push(yCoord); //saves A1 to array
       }
-    } else if (/*left/right*/) {
+    } else if (!vertical) {
       const index = xArr.findIndex(e => e === x);
       for (let i = index; i < shipArr[0]["length"]; i++) {
         const xCoord = xArr[i] + y;
@@ -27,20 +31,11 @@ const gameboard = (ship, action, x, y) => {
       }
     }
   } else if (action === "attack") {
-    //add logic that deciphers where the mark is according to the coords
-
-    /*coord index could be used to find the target number element
-    > if shipArr[0]["coords"][1] then remove 1 from target array
-        "coords": [A2, A3],
-        "targets": [1, 2]
-          >>> HITS MARK A2
-        "coords": [A2, A3],
-        "targets": [2]
-    */
-
-    Ships(shipArr[0]["name"], /*MARK*/)
+    //find index of coord & use it as the mark
+    const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
+    Ships(ship, attIndex)
   } else if (action === "miss") {
-    //??? make a new func that just handles these?
+    //do something to the coord block
   }
   
   //x = "B";
