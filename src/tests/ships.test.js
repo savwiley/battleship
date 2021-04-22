@@ -7,7 +7,6 @@ test("testing ships 1", () => {
     "length": 5,
     "coords": [],
     "targets": [ 1, 2, 4, 5 ],
-    "hits": 1,
     "sunk": false
   })
 });
