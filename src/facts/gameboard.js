@@ -1,31 +1,30 @@
 import Ships from "./ships.js";
 import shipList from "../data/shipList.json";
-//import Missed from "../components/Missed.js";
 
 //this file processes clicks, deciphers action, and sends commands accordingly
 
-const gameboard = (ship, action, x, y) => {
+const gameboard = (ship, action, coord) => {
   //when there's a miss, the 'ship' param is undefined
   //decide if its miss or attack somewhere
 
   //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
-  const coord = x + y;
+  const coArr = coord.split("");
   
   let vertical = false;
   //create conditional statement to change vertical using a btn or smth
 
   if (action === "place") {
     if (vertical) {
-      for (let i = y; i <= shipArr[0]["length"]; i++) {
-        const yCoord = x + i;
+      for (let i = coArr[1]; i <= shipArr[0]["length"]; i++) {
+        const yCoord = coArr[0] + i;
         shipArr[0]["coords"].push(yCoord); 
       }
     } else if (!vertical) {
-      const index = xArr.findIndex(e => e === x);
+      const index = xArr.findIndex(e => e === coArr[0]);
       for (let i = index; i < shipArr[0]["length"]; i++) {
-        const xCoord = xArr[i] + y;
+        const xCoord = xArr[i] + coArr[1];
         shipArr[0]["coords"].push(xCoord);
       }
     }
@@ -39,6 +38,7 @@ const gameboard = (ship, action, x, y) => {
       square.classList.toggle("missed");
     }
     square.style.background = "white";
+    //move this to css later ^
   }
   
   // x = A-E; y = 1-5
@@ -58,6 +58,7 @@ const gameboard = (ship, action, x, y) => {
 }
 
 export default gameboard;
+
 
 
 
