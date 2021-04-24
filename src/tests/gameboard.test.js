@@ -1,7 +1,7 @@
 import gameboard from "../facts/gameboard.js";
 
 test("board test up/down", () => {
-  expect(gameboard("Carrier", "place", "A", "1")).toEqual(
+  expect(gameboard("Carrier", "place", "A1")).toEqual(
     {
       "name": "Carrier",
       "length": 5,
@@ -12,8 +12,8 @@ test("board test up/down", () => {
   )
 });
 
-test("board test left/right", () => {
-  expect(gameboard("Carrier", "place", "A", "1")).toEqual(
+test.only("board test left/right", () => {
+  expect(gameboard("Carrier", "place", "A1")).toEqual(
     {
       "name": "Carrier",
       "length": 5,
