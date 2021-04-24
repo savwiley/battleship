@@ -1,16 +1,16 @@
 import Ships from "./ships.js";
 import shipList from "../data/shipList.json";
+//import Missed from "../components/Missed.js";
 
 //this file processes clicks, deciphers action, and sends commands accordingly
 
 const gameboard = (ship, action, x, y) => {
   //when there's a miss, the 'ship' param is undefined
+  //decide if its miss or attack somewhere
 
   //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
-  //X array
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
-  //A1 = A + 1
   const coord = x + y;
   
   let vertical = false;
@@ -19,8 +19,8 @@ const gameboard = (ship, action, x, y) => {
   if (action === "place") {
     if (vertical) {
       for (let i = y; i <= shipArr[0]["length"]; i++) {
-        const yCoord = x + i; //produces A1
-        shipArr[0]["coords"].push(yCoord); //saves A1 to array
+        const yCoord = x + i;
+        shipArr[0]["coords"].push(yCoord); 
       }
     } else if (!vertical) {
       const index = xArr.findIndex(e => e === x);
@@ -32,10 +32,13 @@ const gameboard = (ship, action, x, y) => {
   } else if (action === "attack") {
     //finds index of coord & uses it as the mark
     const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
-    Ships(ship, attIndex)
+    Ships(ship, attIndex);
   } else if (action === "miss") {
-    //do something to the coord block
-    //perhaps add this coord to another array somewhere, too?
+    const square = document.querySelector(`#${coord}`);
+    if (square) {
+      square.classList.toggle("missed");
+    }
+    square.style.background = "white";
   }
   
   // x = A-E; y = 1-5
