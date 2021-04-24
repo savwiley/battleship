@@ -1,18 +1,16 @@
-import gameboard from "./gameboard.js";
+//import gameboard from "./gameboard.js";
 import shipList from "../data/shipList.json";
 
 //this file changes the ship objects in the data folder
 
 const Ships = (ship, mark) => {
+  //remember to keep track of players
 
-  //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
 
-  //hit the ship
   const hit = shipArr[0]["targets"].findIndex((e) => e === mark);
   shipArr[0]["targets"].splice(hit, 1);
 
-  //sink ship
   if (shipArr[0]["targets"].length < 1) {
     shipArr[0]["sunk"] = true;
   };
@@ -22,14 +20,6 @@ const Ships = (ship, mark) => {
 
 export default Ships;
 
-
-/**
- * Carrier - 5
- * Battleship - 4
- * Destroyer - 3
- * Submarine - 3
- * Patrol Boat - 2
- */
 
  /**
   * Begin your app by creating the Ship factory function.
