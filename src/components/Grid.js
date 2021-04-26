@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import gameboard from "../facts/gameboard.js";
 
-const Grid = () => {
+const Grid = (props) => {
+  const [ place ] = props;
 
   const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
 
@@ -10,9 +11,10 @@ const Grid = () => {
     const grid = document.querySelector(".grid");
 
     const changeSquare = (e) => {
-      gameboard(`ship`, `action`, e.id);
+      gameboard(`ship`, place, e.id);
     };
     //^^^ have to figure out how to define ship and action
+    //this is just for placement. create another file for playing.
 
     if (grid && square) {
       square.map(e => {
