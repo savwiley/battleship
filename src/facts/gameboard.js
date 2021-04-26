@@ -9,24 +9,22 @@ const gameboard = (ship, action, coord) => {
 
   //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
+  //array of x coords
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
+  //splitting coord into array for placement
   const coArr = coord.split("");
-  
-  let vertical = false;
-  //create conditional statement to change vertical using a btn or smth
 
-  if (action === "place") {
-    if (vertical) {
-      for (let i = coArr[1]; i <= shipArr[0]["length"]; i++) {
-        const yCoord = coArr[0] + i;
-        shipArr[0]["coords"].push(yCoord); 
-      }
-    } else if (!vertical) {
-      const index = xArr.findIndex(e => e === coArr[0]);
-      for (let i = index; i < shipArr[0]["length"]; i++) {
-        const xCoord = xArr[i] + coArr[1];
-        shipArr[0]["coords"].push(xCoord);
-      }
+  
+  if (action === "placeV") {
+    for (let i = coArr[1]; i <= shipArr[0]["length"]; i++) {
+      const yCoord = coArr[0] + i;
+      shipArr[0]["coords"].push(yCoord); 
+    }
+  } else if (action === "placeH") {
+    const index = xArr.findIndex(e => e === coArr[0]);
+    for (let i = index; i < shipArr[0]["length"]; i++) {
+      const xCoord = xArr[i] + coArr[1];
+      shipArr[0]["coords"].push(xCoord);
     }
   } else if (action === "attack") {
     //finds index of coord & uses it as the mark
