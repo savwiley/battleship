@@ -1,0 +1,19 @@
+/* -- PRESETS rearrange later -- */
+
+.grid {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #000;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.square {
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.missed {
+  background: #fff;
+}
