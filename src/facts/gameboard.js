@@ -37,8 +37,6 @@ const gameboard = (ship, action, coord) => {
     if (square) {
       square.classList.toggle("missed");
     }
-    square.style.background = "white";
-    //move this to css later ^
   }
   
   // x = A-E; y = 1-5
