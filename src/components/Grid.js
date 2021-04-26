@@ -12,7 +12,6 @@ const Grid = () => {
     const changeSquare = (e) => {
       gameboard(`ship`, `action`, e.id);
     };
-
     //^^^ have to figure out how to define ship and action
 
     if (grid && square) {
@@ -28,24 +27,13 @@ const Grid = () => {
   // x left/right (letters), y up/down (numbers)
 
   return (
-    <div className="grid" style={{
-      display: "grid",
-      width: "500px",
-      height: "500px",
-      gridTemplateColumns: "repeat(10, 1fr)",
-      gridTemplateRows: "repeat(10, 1fr)",
-      border: "1px solid black",
-    }}>
+    <div className="grid">
       {alpha.map(i =>
         alpha.map(e =>
           <div 
             className="square"
             id={e + alpha.indexOf(i)}
-            key={e + alpha.indexOf(i)}
-            style={{
-              border: "1px solid black",
-              cursor: "pointer",
-            }}>
+            key={e + alpha.indexOf(i)}>
           </div>
         )
       )}
