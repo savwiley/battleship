@@ -1,11 +1,11 @@
 import gameboard from "../facts/gameboard.js";
 
 test("board test up/down", () => {
-  expect(gameboard("Carrier", "place", "A1")).toEqual(
+  expect(gameboard("Carrier", "placeV", "A4")).toEqual(
     {
       "name": "Carrier",
       "length": 5,
-      "coords": [ "A1", "A2", "A3", "A4", "A5" ],
+      "coords": [ "A4", "A5", "A6", "A7", "A8" ],
       "targets": [ 1, 2, 3, 4, 5 ],
       "sunk": false
     }
@@ -13,11 +13,11 @@ test("board test up/down", () => {
 });
 
 test.only("board test left/right", () => {
-  expect(gameboard("Carrier", "place", "A1")).toEqual(
+  expect(gameboard("Carrier", "placeH", "D1")).toEqual(
     {
       "name": "Carrier",
       "length": 5,
-      "coords": [ "A1", "B1", "C1", "D1", "E1" ],
+      "coords": [ "D1", "E1", "F1", "G1", "H1" ],
       "targets": [ 1, 2, 3, 4, 5 ],
       "sunk": false
     }
