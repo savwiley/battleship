@@ -1,5 +1,6 @@
 import Ships from "./ships.js";
 import shipList from "../data/shipList.json";
+import checkCoord from "./checkCoord.js";
 
 //this file processes clicks, deciphers action, and sends commands accordingly
 
@@ -16,18 +17,27 @@ const gameboard = (ship, action, coord) => {
 
   
   if (action === "placeV") {
-    for (let i = coArr[1]; i <= shipArr[0]["length"]; i++) {
-      const yCoord = coArr[0] + i;
+    for (let i = 0; i < shipArr[0]["length"]; i++) {
+      const yCoord = coArr[0] + coArr[1];
       shipArr[0]["coords"].push(yCoord); 
-    }
+      coArr[1]++;
+    };
+    shipArr[0]["coords"].map(e => {
+      const squares = document.querySelectorAll(`#${e}`);
+      return squares[0].style.background = "green";
+    });
   } else if (action === "placeH") {
-    const index = xArr.findIndex(e => e === coArr[0]);
-    for (let i = index; i < shipArr[0]["length"]; i++) {
-      const xCoord = xArr[i] + coArr[1];
+    let index = xArr.findIndex(e => e === coArr[0]);
+    for (let i = 0; i < shipArr[0]["length"]; i++) {
+      const xCoord = xArr[index] + coArr[1];
       shipArr[0]["coords"].push(xCoord);
-    }
+      index++;
+    };
+    shipArr[0]["coords"].map(e => {
+      const squares = document.querySelectorAll(`#${e}`);
+      return squares[0].style.background = "green";
+    });
   } else if (action === "attack") {
-    //finds index of coord & uses it as the mark
     const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
     Ships(ship, attIndex);
   } else if (action === "miss") {
@@ -42,6 +52,14 @@ const gameboard = (ship, action, coord) => {
 
 
   /*
+  shipArr[0]["coords"].map(e => {
+      const squares = document.querySelectorAll(`#${e}`);
+      return squares.map(e => {
+        return squares.style.background = "green";
+      })
+    })
+
+
   Gameboards should have a receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
 
   Gameboards should keep track of missed attacks so they can display them properly.
