@@ -1,17 +1,34 @@
-/* -- PRESETS rearrange later -- */
+:root {
+  --dark: #242424;
+
+  --blue: #00c3ff;
+  --dBlue: #026b8b;
+}
+
+body {
+  background: var(--dark);
+}
+
+/* GRID */
 
 .grid {
   display: grid;
   width: 500px;
   height: 500px;
-  border: 1px solid #000;
+  border: 1px solid var(--blue);
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
 }
 
 .square {
-  border: 1px solid #000;
+  border: 1px solid var(--dBlue);
   cursor: pointer;
+  background: url("https://icons8.com/wp-content/uploads/2020/07/water-texture-miracle.jpg");
+  background-attachment: fixed;
+}
+.square:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url("https://icons8.com/wp-content/uploads/2020/07/water-texture-miracle.jpg");
+  background-attachment: fixed;
 }
 
 .missed {
