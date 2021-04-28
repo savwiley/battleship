@@ -1,17 +1,17 @@
 import React from "react";
 //import gameboard from "./facts/gameboard.js";
-//import Grid from "./components/Grid.js";
+import PlayerGrid from "./components/PlayerGrid.js";
+import AIGrid from "./components/AIGrid.js";
 
 //this file will be for actually playing the game
-
-/**
- * I think I should leave "Grid.js" for placement only. I can create a player board and AI board in separate component files.
- */
 
 const Game = () => {
 
   return (
     <>
+      <PlayerGrid />
+
+      <AIGrid />
     </>
   )
 };
