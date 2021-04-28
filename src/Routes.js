@@ -1,11 +1,13 @@
 import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
+import App from "./App.js";
 import Game from "./Game.js";
 
 const Routes = () => {
   return (
     <HashRouter basename="/">
       <Switch>
+        <Route exact path ="/" render={() => <App />} />
         <Route exact path="/Game" render={() => <Game />} />
       </Switch>
     </HashRouter>
