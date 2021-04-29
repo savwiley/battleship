@@ -5,8 +5,6 @@ import checkCoord from "./checkCoord.js";
 //this file processes clicks, deciphers action, and sends commands accordingly
 
 const gameboard = (ship, action, coord) => {
-  //when there's a miss, the 'ship' param is undefined
-  //decide if its miss or attack somewhere
 
   //grab the ship
   const shipArr = shipList.filter((e) => e.name === ship);
@@ -14,9 +12,19 @@ const gameboard = (ship, action, coord) => {
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
   //splitting coord into array for placement
   const coArr = coord.split("");
+  //grabs square dom of coord
+  const square = document.querySelector(`#${coord}`);
 
-  
-  if (action === "placeV") {
+  //EACH SHIP CAN ONLY BE PLACED ONCE
+  //on second et al. attempts, change coords
+
+  if (!ship) {
+    if (square) {
+      square.classList.toggle("missed");
+      square.removeEventListener("click", `SEE GAME.JS`);
+    }
+
+  } else if (action === "placeV") {
     for (let i = 0; i < shipArr[0]["length"]; i++) {
       const yCoord = coArr[0] + coArr[1];
       shipArr[0]["coords"].push(yCoord); 
@@ -24,8 +32,9 @@ const gameboard = (ship, action, coord) => {
     };
     shipArr[0]["coords"].map(e => {
       const squares = document.querySelectorAll(`#${e}`);
-      return squares[0].style.background = "green";
+      return squares[0].classList.toggle("placed");
     });
+
   } else if (action === "placeH") {
     let index = xArr.findIndex(e => e === coArr[0]);
     for (let i = 0; i < shipArr[0]["length"]; i++) {
@@ -35,16 +44,14 @@ const gameboard = (ship, action, coord) => {
     };
     shipArr[0]["coords"].map(e => {
       const squares = document.querySelectorAll(`#${e}`);
-      return squares[0].style.background = "green";
+      return squares[0].classList.toggle("placed");
     });
+
   } else if (action === "attack") {
     const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
+    square.removeEventListener("click", `SEE GAME.JS`);
+    square.classList.toggle("attacked");
     Ships(ship, attIndex);
-  } else if (action === "miss") {
-    const square = document.querySelector(`#${coord}`);
-    if (square) {
-      square.classList.toggle("missed");
-    }
   }
   
   // x = A-E; y = 1-5
