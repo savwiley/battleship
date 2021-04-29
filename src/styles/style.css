@@ -31,6 +31,17 @@ body {
   background-attachment: fixed;
 }
 
-.missed {
+/* CHANGED SQUARES */
+
+.placed, .placed:hover {
+  background: #0f0;
+}
+.missed, .missed:hover {
   background: #fff;
+}
+.attacked, .attacked:hover {
+  background: #f00;
+}
+.sunk, .sunk:hover {
+  background: #000;
 }
