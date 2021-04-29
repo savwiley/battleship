@@ -16,32 +16,34 @@ import enemyList from "../data/enemyShipList.json";
 //BRUH https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
 
 const checkCoord = (player, coord) => {
-  let check = true;
+  let check = false;
   let plTakenCoords = [];
   let aiTakenCoords = [];
-
-  plTakenCoords = [];
-  shipList.map(e => {
-    for (let i = 0; i < e.length; i++) {
-      plTakenCoords.push(e.coords[i]);
-    }
-  });
 
   aiTakenCoords = [];
   enemyList.map(e => {
     for (let i = 0; i < e.length; i++) {
       aiTakenCoords.push(e.coords[i]);
     }
+    return aiTakenCoords;
   });
+
+  //I need it to be able to (on its OWN board) know where available squares are to place its own ships and (on PLAYER's board) know where available squares are that weren't previously clicked.
 
   //checks if the square is a ship
   if (player === "human") {
+    shipList.map(e => {
+      for (let i = 0; i < e.length; i++) {
+        plTakenCoords.push(e.coords[i]);
+      }
+      return plTakenCoords;
+    });
     plTakenCoords.map(e => 
-      e === coord ? check = false : check = true
+      e === coord ? check = true : null
     )
   } else if (player === "computer") {
     aiTakenCoords.map(e => 
-      e === coord ? check = false : check = true
+      e === coord ? check = true : null
     );
   };
 
@@ -49,7 +51,7 @@ const checkCoord = (player, coord) => {
   //I also need to place ships in Game.js using the JSON
 
   return check;
-  //check returns true if coord isn't taken up or false if it is
+  //check returns false if coord isn't taken up or true if it is
 }
 
 export default checkCoord;
