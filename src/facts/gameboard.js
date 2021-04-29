@@ -1,13 +1,19 @@
 import Ships from "./ships.js";
 import shipList from "../data/shipList.json";
+import enemyShipList from "../data/enemyShipList.json";
 import checkCoord from "./checkCoord.js";
 
 //this file processes clicks, deciphers action, and sends commands accordingly
 
-const gameboard = (ship, action, coord) => {
+const gameboard = (player, ship, action, coord) => {
 
   //grab the ship
-  const shipArr = shipList.filter((e) => e.name === ship);
+  let shipArr;
+  if (player === "human") {
+    shipArr = shipList.filter((e) => e.name === ship);
+  } else if (player === "computer") {
+    shipArr = enemyShipList.filter((e) => e.name === ship);
+  }
   //array of x coords
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
   //splitting coord into array for placement
@@ -15,41 +21,66 @@ const gameboard = (ship, action, coord) => {
   //grabs square dom of coord
   const square = document.querySelector(`#${coord}`);
 
-  //EACH SHIP CAN ONLY BE PLACED ONCE
-  //on second et al. attempts, change coords
-
   if (!ship) {
     if (square) {
       square.classList.toggle("missed");
-      square.removeEventListener("click", `SEE GAME.JS`);
     }
 
-  } else if (action === "placeV") {
-    for (let i = 0; i < shipArr[0]["length"]; i++) {
-      const yCoord = coArr[0] + coArr[1];
-      shipArr[0]["coords"].push(yCoord); 
-      coArr[1]++;
-    };
-    shipArr[0]["coords"].map(e => {
-      const squares = document.querySelectorAll(`#${e}`);
-      return squares[0].classList.toggle("placed");
-    });
+  //PROBLEM when placing ships the go off the grid
 
-  } else if (action === "placeH") {
-    let index = xArr.findIndex(e => e === coArr[0]);
-    for (let i = 0; i < shipArr[0]["length"]; i++) {
-      const xCoord = xArr[index] + coArr[1];
-      shipArr[0]["coords"].push(xCoord);
-      index++;
-    };
-    shipArr[0]["coords"].map(e => {
-      const squares = document.querySelectorAll(`#${e}`);
-      return squares[0].classList.toggle("placed");
-    });
+  } else if (action === "placeV" || action === "placeH") {
+    //check if ship has already been placed
+    if (shipArr[0]["coords"].length !== shipArr[0]["length"]) {
+      //stores all coords
+      let coordArr = [];
+      //stores booleans
+      let checkArr = [];
+      //variable
+      let numb = 0;
+      //if placement vertical
+      if (action === "placeV") {
+        //loops through each coord to save
+        for (let i = 0; i < shipArr[0]["length"]; i++) {
+          const yCoord = coArr[0] + coArr[1];
+          coordArr.push(yCoord);
+          coArr[1]++;
+        };
+      //if placement horizontal
+      } else if (action === "placeH") {
+        //finds index of letter
+        let index = xArr.findIndex(e => e === coArr[0]);
+        //loops through each coord to save
+        for (let i = 0; i < shipArr[0]["length"]; i++) {
+          const xCoord = xArr[index] + coArr[1];
+          coordArr.push(xCoord);
+          index++;
+        };
+      }
+      //checks all coords and saves booleans
+      coordArr.map(e => {
+        return checkArr.push(checkCoord("human", e));
+      });
+      //check all booleans to find if any are true
+      checkArr.map(e => e === true ? numb++ : numb);
+      //if all booleans are false, place ship
+      if (numb === 0) {
+        coordArr.map (e => {
+          return shipArr[0]["coords"].push(e);
+        })
+      //if any booleans are true, send alert
+      } else {
+        alert("Ships can't overlap");
+      };
+      //visually take squares
+      shipArr[0]["coords"].map(e => {
+        const squares = document.querySelectorAll(`#${e}`);
+        console.log(shipArr[0]["coords"]);
+        return squares[0].classList.toggle("placed");
+      });
+    }
 
   } else if (action === "attack") {
     const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
-    square.removeEventListener("click", `SEE GAME.JS`);
     square.classList.toggle("attacked");
     Ships(ship, attIndex);
   }
