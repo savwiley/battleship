@@ -1,5 +1,6 @@
 import gameboard from "../facts/gameboard.js";
 
+
 test("board test up/down", () => {
   expect(gameboard("Carrier", "placeV", "A4")).toEqual(
     {
