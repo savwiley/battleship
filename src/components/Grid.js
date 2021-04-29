@@ -11,7 +11,7 @@ const Grid = (props) => {
     const grid = document.querySelector(".grid");
 
     const changeSquare = (e) => {
-      gameboard(ship.current, place.current, e.id);
+      gameboard("human", ship.current, place.current, e.id);
     };
 
     if (grid && square) {
