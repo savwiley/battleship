@@ -13,7 +13,15 @@ const Ships = (ship, mark) => {
 
   if (shipArr[0]["targets"].length < 1) {
     shipArr[0]["sunk"] = true;
+    shipArr[0]["coords"].map(e => {
+      const squares = document.querySelectorAll(`#${e}`);
+      return squares[0].classList.toggle("sunk");
+    });
   };
+
+  //right now, this is set so that coords can be attacked more than once. perhaps hit AND missed squares should have event listeners removed.
+
+  //don't forget to add visual to sunk ship
 
   return shipArr[0];
 }
