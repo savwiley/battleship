@@ -20,14 +20,6 @@ const checkCoord = (player, coord) => {
   let plTakenCoords = [];
   let aiTakenCoords = [];
 
-  aiTakenCoords = [];
-  enemyList.map(e => {
-    for (let i = 0; i < e.length; i++) {
-      aiTakenCoords.push(e.coords[i]);
-    }
-    return aiTakenCoords;
-  });
-
   //I need it to be able to (on its OWN board) know where available squares are to place its own ships and (on PLAYER's board) know where available squares are that weren't previously clicked.
 
   //VV I used this to check if player is overlapping ships on placement. So it's not just for the AI.
@@ -44,6 +36,12 @@ const checkCoord = (player, coord) => {
       e === coord ? check = true : null
     )
   } else if (player === "computer") {
+    enemyList.map(e => {
+      for (let i = 0; i < e.length; i++) {
+        aiTakenCoords.push(e.coords[i]);
+      }
+      return aiTakenCoords;
+    });
     aiTakenCoords.map(e => 
       e === coord ? check = true : null
     );
