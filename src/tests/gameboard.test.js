@@ -13,12 +13,24 @@ test("board test up/down", () => {
   )
 });
 
-test.only("board test left/right", () => {
+test("board test left/right", () => {
   expect(gameboard("Carrier", "placeH", "D1")).toEqual(
     {
       "name": "Carrier",
       "length": 5,
       "coords": [ "D1", "E1", "F1", "G1", "H1" ],
+      "targets": [ 1, 2, 3, 4, 5 ],
+      "sunk": false
+    }
+  )
+});
+
+test.only("off grid test", () => {
+  expect(gameboard("human", "Carrier", "placeV", "J9")).toEqual(
+    {
+      "name": "Carrier",
+      "length": 5,
+      "coords": [ "J9" ],
       "targets": [ 1, 2, 3, 4, 5 ],
       "sunk": false
     }
