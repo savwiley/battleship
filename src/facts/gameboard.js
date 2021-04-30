@@ -31,9 +31,6 @@ const gameboard = (player, ship, action, coord) => {
       square.classList.toggle("missed");
     }
 
-  //PROBLEM when placing ships that go off the grid
-  //First, we have to figure out what's happening when they go off the grid. I think this is a task for jest!
-
   } else if (action === "placeV" || action === "placeH") {
     //check if ship has already been placed
     if (shipArr[0]["coords"].length !== shipArr[0]["length"]) {
