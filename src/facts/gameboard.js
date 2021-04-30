@@ -21,12 +21,18 @@ const gameboard = (player, ship, action, coord) => {
   //grabs square dom of coord
   const square = document.querySelector(`#${coord}`);
 
+  //prevents ships from leaving the grid
+  function range(numb) {
+    return numb < 0 ? false : (numb > 9 ? false : true)
+  }
+
   if (!ship) {
     if (square) {
       square.classList.toggle("missed");
     }
 
-  //PROBLEM when placing ships the go off the grid
+  //PROBLEM when placing ships that go off the grid
+  //First, we have to figure out what's happening when they go off the grid. I think this is a task for jest!
 
   } else if (action === "placeV" || action === "placeH") {
     //check if ship has already been placed
@@ -41,9 +47,16 @@ const gameboard = (player, ship, action, coord) => {
       if (action === "placeV") {
         //loops through each coord to save
         for (let i = 0; i < shipArr[0]["length"]; i++) {
-          const yCoord = coArr[0] + coArr[1];
-          coordArr.push(yCoord);
-          coArr[1]++;
+          const limit = range(coArr[1]);
+          if (limit === true) {
+            const yCoord = coArr[0] + coArr[1];
+            coordArr.push(yCoord);
+            coArr[1]++;
+          } else {
+            alert("Ships can't leave grid");
+            coordArr = [];
+            i = shipArr[0]["length"];
+          }
         };
       //if placement horizontal
       } else if (action === "placeH") {
@@ -51,9 +64,16 @@ const gameboard = (player, ship, action, coord) => {
         let index = xArr.findIndex(e => e === coArr[0]);
         //loops through each coord to save
         for (let i = 0; i < shipArr[0]["length"]; i++) {
-          const xCoord = xArr[index] + coArr[1];
-          coordArr.push(xCoord);
-          index++;
+          const limit = range(index);
+          if (limit === true) {
+            const xCoord = xArr[index] + coArr[1];
+            coordArr.push(xCoord);
+            index++;
+          } else {
+            alert("Ships can't leave grid");
+            coordArr = [];
+            i = shipArr[0]["length"];
+          }
         };
       }
       //checks all coords and saves booleans
@@ -74,7 +94,6 @@ const gameboard = (player, ship, action, coord) => {
       //visually take squares
       shipArr[0]["coords"].map(e => {
         const squares = document.querySelectorAll(`#${e}`);
-        console.log(shipArr[0]["coords"]);
         return squares[0].classList.toggle("placed");
       });
     }
