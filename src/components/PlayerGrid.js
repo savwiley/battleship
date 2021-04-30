@@ -2,7 +2,7 @@ import React from "react";
 //import shipList from "../data/shipList.json";
 //import gameboard from "../facts/gameboard.js";
 
-const PlayerGrid = () => {
+const PlayerGrid = (props) => {
   const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
 
   /**

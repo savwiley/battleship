@@ -2,8 +2,11 @@ import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import App from "./App.js";
 import Game from "./Game.js";
+//import shipList from "./data/shipList.json";
 
 const Routes = () => {
+
+
   return (
     <HashRouter basename="/">
       <Switch>
