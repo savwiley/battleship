@@ -9,5 +9,5 @@ test("getting a ship", () => {
 
 
 test.only("check coord", () => {
-  expect(checkCoord("human", "Ai")).toBe(true)
+  expect(checkCoord("human", "A1")).toBe(false)
 })
