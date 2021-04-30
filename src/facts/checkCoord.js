@@ -30,6 +30,8 @@ const checkCoord = (player, coord) => {
 
   //I need it to be able to (on its OWN board) know where available squares are to place its own ships and (on PLAYER's board) know where available squares are that weren't previously clicked.
 
+  //VV I used this to check if player is overlapping ships on placement. So it's not just for the AI.
+
   //checks if the square is a ship
   if (player === "human") {
     shipList.map(e => {
