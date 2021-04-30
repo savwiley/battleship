@@ -26,11 +26,11 @@ test("board test left/right", () => {
 });
 
 test.only("off grid test", () => {
-  expect(gameboard("human", "Carrier", "placeV", "J9")).toEqual(
+  expect(gameboard("human", "Carrier", "placeH", "J9")).toEqual(
     {
       "name": "Carrier",
       "length": 5,
-      "coords": [ "J9" ],
+      "coords": [],
       "targets": [ 1, 2, 3, 4, 5 ],
       "sunk": false
     }
