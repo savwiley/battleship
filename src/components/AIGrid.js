@@ -22,12 +22,12 @@ const AIGrid = () => {
       if (grid) {
         const square = grid.querySelector(`#${takenCoords[i]}`);
         if (square) {
+          console.log(`${takenCoords[i]} placed with grid`);
           square.classList.toggle("placed");
         }
       }
     }
   });
-
 
 
 
@@ -173,36 +173,6 @@ const AIGrid = () => {
    */
 
 
-   //gets a random coord
-   const getCoord = () => {
-     const numbX = Math.floor(Math.random() * 10);
-     const letterX = alpha[numbX];
-     const numbY = Math.floor(Math.random() * 10);
-     return letterX + numbY;
-   };
-
-   //gets a random direction
-   const getDirection = () => {
-     const numb = Math.floor(Math.random() * 2);
-     if (numb === 0) {
-       return "placeV";
-     } else if (numb === 1) {
-       return "placeH";
-     }
-   };
-
-   //gets a random, unplaced ship array
-   const getShip = () => {
-     for (let i = 0; i <= shipList.length; i++) {
-       if (shipList[i]["coords"].length !== shipList[i]["length"]) {
-         const shipArr = shipList[i];
-         i = shipList.length;
-         return shipArr;
-       }
-     }
-   };
-
-
 
 
    /**
@@ -308,6 +278,7 @@ const AIGrid = () => {
             className="square"
             id={e + alpha.indexOf(i)}
             key={e + alpha.indexOf(i)}>
+              {e + alpha.indexOf(i)}
           </div>
         )
       )}
