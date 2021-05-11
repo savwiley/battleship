@@ -81,7 +81,11 @@ const gameboard = (player, ship, action, coord) => {
       }
       //checks all coords and saves booleans
       coordArr.map(e => {
-        return checkArr.push(checkCoord("human", e));
+        if (player === "human") {
+          return checkArr.push(checkCoord("human", e));
+        } else {
+          return checkArr.push(checkCoord("computer", e));
+        }
       });
       //check all booleans to find if any are true
       checkArr.map(e => e === true ? numb++ : numb);
@@ -94,7 +98,7 @@ const gameboard = (player, ship, action, coord) => {
       } else if (numb !== 0 && player === "human") {
         alert("Ships can't overlap");
       };
-      //visually take squares
+      //visually take squares for player only
       shipArr[0]["coords"].map(e => {
         const squares = document.querySelectorAll(`#${e}`);
         return squares[0].classList.toggle("placed");
