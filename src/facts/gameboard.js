@@ -49,8 +49,11 @@ const gameboard = (player, ship, action, coord) => {
             const yCoord = coArr[0] + coArr[1];
             coordArr.push(yCoord);
             coArr[1]++;
-          } else {
+          } else if (limit === false && player === "human") {
             alert("Ships can't leave grid");
+            coordArr = [];
+            i = shipArr[0]["length"];
+          } else if (limit === false && player === "computer") {
             coordArr = [];
             i = shipArr[0]["length"];
           }
@@ -66,8 +69,11 @@ const gameboard = (player, ship, action, coord) => {
             const xCoord = xArr[index] + coArr[1];
             coordArr.push(xCoord);
             index++;
-          } else {
+          } else if (limit === false && player === "human") {
             alert("Ships can't leave grid");
+            coordArr = [];
+            i = shipArr[0]["length"];
+          } else if (limit === false && player === "computer") {
             coordArr = [];
             i = shipArr[0]["length"];
           }
@@ -85,7 +91,7 @@ const gameboard = (player, ship, action, coord) => {
           return shipArr[0]["coords"].push(e);
         })
       //if any booleans are true, send alert
-      } else {
+      } else if (numb !== 0 && player === "human") {
         alert("Ships can't overlap");
       };
       //visually take squares
