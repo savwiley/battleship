@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import shipList from "../data/shipList.json";
 //import gameboard from "../facts/gameboard.js";
 
-const PlayerGrid = (props) => {
+const PlayerGrid = () => {
   const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
 
   //this logic places player ships on player grid when game starts
