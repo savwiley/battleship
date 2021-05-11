@@ -34,19 +34,21 @@ const Game = () => {
       if (enShipList[i]["coords"].length !== enShipList[i]["length"]) {
         const shipArr = enShipList[i];
         i = enShipList.length;
+        console.log(shipArr["name"]);
         return shipArr["name"];
       }
     }
   };
 
   //AI places ships
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     gameboard("computer", getShip(), getDirection(), getCoord());
     console.log(`I ran ${i} times!`);
   };
 
   /**
    * figure out how to run it again if ship fails to place
+   * you have console.logs in gameboard loop and getCoords
    */
 
 
