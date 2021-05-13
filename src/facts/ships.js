@@ -8,8 +8,13 @@ const Ships = (ship, mark) => {
 
   const shipArr = shipList.filter((e) => e.name === ship);
 
-  const hit = shipArr[0]["targets"].findIndex((e) => e === mark);
+  const hit = shipArr[0]["targets"].indexOf((e) => e === mark);
   shipArr[0]["targets"].splice(hit, 1);
+
+  console.log(shipArr[0]["targets"]);
+  /**
+   * the ["targets"] are all messed up. pretty sure the issue is .indexOf or something to do with putting it in the array.
+   */
 
   if (shipArr[0]["targets"].length < 1) {
     shipArr[0]["sunk"] = true;
