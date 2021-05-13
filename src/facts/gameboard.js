@@ -26,10 +26,17 @@ const gameboard = (player, ship, action, coord) => {
     return numb < 0 ? false : (numb > 9 ? false : true)
   }
 
-  if (!ship) {
+  if (action === "missed") {
     if (square) {
       square.classList.toggle("missed");
     }
+
+  } else if (action === "attack") {
+    const attIndex = shipArr[0]["coords"].indexOf(coord);
+    if (square) {
+      square.classList.toggle("attacked");
+    }
+    Ships(ship, attIndex);
 
   } else if (action === "placeV" || action === "placeH") {
     //check if ship has already been placed
@@ -105,10 +112,6 @@ const gameboard = (player, ship, action, coord) => {
       });
     }
 
-  } else if (action === "attack") {
-    const attIndex = shipArr[0]["coords"].findIndex(e => e === coord);
-    square.classList.toggle("attacked");
-    Ships(ship, attIndex);
   }
   
   // x = A-E; y = 1-5
