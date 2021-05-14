@@ -1,26 +1,42 @@
 //import gameboard from "./gameboard.js";
 import shipList from "../data/shipList.json";
+import enemyShipList from "../data/enemyShipList.json";
 
 //this file changes the ship objects in the data folder
 
-const Ships = (ship, mark) => {
-  //remember to keep track of players
+const Ships = (player, ship, mark) => {
 
-  const shipArr = shipList.filter((e) => e.name === ship);
+  //grabs the ship
+  let shipArr;
+  if (player === "human") {
+    shipArr = shipList.filter((e) => e.name === ship);
+  } else if (player === "computer") {
+    shipArr = enemyShipList.filter((e) => e.name === ship);
+  };
 
-  const hit = shipArr[0]["targets"].indexOf((e) => e === mark);
+  //determines which target was hit and removes it
+  const hit = shipArr[0]["targets"].indexOf(mark + 1);
   shipArr[0]["targets"].splice(hit, 1);
 
-  console.log(shipArr[0]["targets"]);
-  /**
-   * the ["targets"] are all messed up. pretty sure the issue is .indexOf or something to do with putting it in the array.
-   */
-
+  //sinks ships
   if (shipArr[0]["targets"].length < 1) {
     shipArr[0]["sunk"] = true;
     shipArr[0]["coords"].map(e => {
-      const squares = document.querySelectorAll(`#${e}`);
-      return squares[0].classList.toggle("sunk");
+      //grabs square dom of coord from each board
+      let square;
+      let grid;
+      if (player === "human") {
+        grid = Array.from(document.getElementsByClassName("grid playerGrid"));
+        grid.map(x => {
+          return square = x.querySelector(`#${e}`);
+        });
+      } else if (player === "computer") {
+        grid = Array.from(document.getElementsByClassName("grid aiGrid"));
+        grid.map(x => {
+          return square = x.querySelector(`#${e}`);
+        });
+      };
+      return square.classList.toggle("sunk");
     });
   };
 
