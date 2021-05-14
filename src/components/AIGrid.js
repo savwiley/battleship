@@ -30,8 +30,12 @@ const AIGrid = () => {
 
   //player takes a turn
   useEffect(() => {
-    const square = Array.from(document.querySelectorAll(".square"));
-    const grid = document.querySelector(".aiGrid");
+    //selects squares only on aiGrid
+    const grid = Array.from(document.getElementsByClassName("grid aiGrid"));
+    let square;
+    grid.map(e => {
+      return square = Array.from(e.querySelectorAll(".square"));
+    });
 
     const attackSquare = (e, ship, move) => {
       gameboard("computer", ship, move, e.id);
