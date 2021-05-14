@@ -6,6 +6,7 @@ import checkCoord from "./checkCoord.js";
 //this file processes clicks, deciphers action, and sends commands accordingly
 
 const gameboard = (player, ship, action, coord) => {
+  //NOTE: player is defined by which board is in play, not which player is taking a turn. If "human" is clicking on the "computer" board, then player = "computer."
 
   //grab the ship
   let shipArr;
@@ -18,8 +19,20 @@ const gameboard = (player, ship, action, coord) => {
   const xArr = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
   //splitting coord into array for placement
   const coArr = coord.split("");
-  //grabs square dom of coord
-  const square = document.querySelector(`#${coord}`);
+  //grabs square dom of coord from each board
+  let square;
+  let grid;
+  if (player === "human") {
+    grid = Array.from(document.getElementsByClassName("grid playerGrid"));
+    grid.map(e => {
+      return square = e.querySelector(`#${coord}`);
+    });
+  } else if (player === "computer") {
+    grid = Array.from(document.getElementsByClassName("grid aiGrid"));
+    grid.map(e => {
+      return square = e.querySelector(`#${coord}`);
+    });
+  };
 
   //prevents ships from leaving the grid
   function range(numb) {
@@ -27,7 +40,10 @@ const gameboard = (player, ship, action, coord) => {
   }
 
   if (action === "missed") {
-    if (square) {
+    if (square.classList.value === "square missed"
+      || square.classList.value === "square placed attacked") {
+      alert("Already struck here!");
+    } else if (square) {
       square.classList.toggle("missed");
     }
 
@@ -35,8 +51,8 @@ const gameboard = (player, ship, action, coord) => {
     const attIndex = shipArr[0]["coords"].indexOf(coord);
     if (square) {
       square.classList.toggle("attacked");
+      Ships(player, ship, attIndex);
     }
-    Ships(ship, attIndex);
 
   } else if (action === "placeV" || action === "placeH") {
     //check if ship has already been placed
