@@ -44,4 +44,5 @@ body {
 }
 .sunk, .sunk:hover {
   background: #000;
+  color: #fff;
 }
