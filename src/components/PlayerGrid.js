@@ -24,6 +24,10 @@ const PlayerGrid = () => {
     }
   });
 
+  /**
+   * Now figure out how the computer plays. See Game.js where random funcs are held. Consider putting them in their own file for ease of access.
+   */
+
   return(
     <div className="grid playerGrid">
       {alpha.map(i =>
