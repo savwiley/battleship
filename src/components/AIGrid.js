@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import shipList from "../data/enemyShipList.json";
 import gameboard from "../facts/gameboard.js";
+import aiTurn from "../facts/aiTurn.js";
 //import checkCoord from "../facts/checkCoord.js";
 
 const AIGrid = () => {
@@ -38,6 +39,9 @@ const AIGrid = () => {
     });
 
     const attackSquare = (e, ship, move) => {
+      if (e.className === "square" || e.className === "square placed") {
+        aiTurn();
+      };
       gameboard("computer", ship, move, e.id);
     };
 
