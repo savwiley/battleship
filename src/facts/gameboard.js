@@ -41,7 +41,8 @@ const gameboard = (player, ship, action, coord) => {
 
   if (action === "missed") {
     if (square.classList.value === "square missed"
-      || square.classList.value === "square placed attacked") {
+      || square.classList.value === "square placed attacked"
+      || square.classList.value === "square placed attacked sunk") {
       alert("Already struck here!");
     } else if (square) {
       square.classList.toggle("missed");
