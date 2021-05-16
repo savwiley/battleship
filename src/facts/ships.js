@@ -19,7 +19,7 @@ const Ships = (player, ship, mark) => {
   shipArr[0]["targets"].splice(hit, 1);
 
   //sinks ships
-  if (shipArr[0]["targets"].length < 1) {
+  if (shipArr[0]["targets"].length === 0) {
     shipArr[0]["sunk"] = true;
     shipArr[0]["coords"].map(e => {
       //grabs square dom of coord from each board
