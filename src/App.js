@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Grid from "./components/Grid.js";
+import Header from "./components/Header.js";
 
-//this file will be for placing ships
+//this file is for placing ships
 
 function App() {
   const place = useRef("placeH");
@@ -40,40 +41,37 @@ function App() {
       shipContList.map(e => {
         return e.addEventListener("click", () => {
           nameShip(e);
+          e.style.background = "#929292";
+          e.style.color = "#616161";
         });
       })
     }
   });
 
-
-    /**
-     * Create logic to place ships
-     * - Fill in the squares using Grid that the player selects
-     * - Create route link that'll take you to the Game.js after all ships are on the grid
-     * 
-     * FA dots & circles for pegs/ships
-     */
-
   return (
     <div className="App">
+
+      <Header />
       
       <Grid place={place} ship={ship} />
 
-      <button className="directionBtn">Place Ships Vertically</button>
+      <div className="menu">
+        <button className="directionBtn">Place Ships Vertically</button>
 
-      <div className="shipContainer">
-        <div className="ship">Carrier</div>
-        <div className="ship">Battleship</div>
-        <div className="ship">Destroyer</div>
-        <div className="ship">Submarine</div>
-        <div className="ship">Patrol Boat</div>
-      </div>
-
-      <Link to="/Game">
-        <div className="playBtn">
-          Play Game!
+        <div className="shipContainer">
+          <div className="ship">Carrier</div>
+          <div className="ship">Battleship</div>
+          <div className="ship">Destroyer</div>
+          <div className="ship">Submarine</div>
+          <div className="ship">Patrol Boat</div>
         </div>
-      </Link>
+
+        <Link to="/Game">
+          <div className="playBtn">
+            Play Game!
+          </div>
+        </Link>
+      </div>
     
     </div>
   );
@@ -83,4 +81,16 @@ export default App;
 
 /**
  * https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/battleship
+ * 
+ * 
+ * 
+ * TODOS
+ * -css
+ * -license
+ * -readme
+ * -change alerts to css popups
+ * -declare winner
+ * -declare sunken ships
+ * -check if testing returns are still needed (probs not???)
+ * -hide computer's ships in css
  */
