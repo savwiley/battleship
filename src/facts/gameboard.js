@@ -34,6 +34,9 @@ const gameboard = (player, ship, action, coord) => {
     });
   };
 
+  //grabs the placement menu items
+  const shipMenuList = Array.from(document.querySelectorAll(".ship"));
+
   //prevents ships from leaving the grid
   function range(numb) {
     return numb < 0 ? false : (numb > 9 ? false : true)
@@ -77,6 +80,12 @@ const gameboard = (player, ship, action, coord) => {
             alert("Ships can't leave grid");
             coordArr = [];
             i = shipArr[0]["length"];
+            shipMenuList.map(e => {
+              if (e.textContent === shipArr[0]["name"]) {
+                e.style.outline = "1px solid #fff";
+              }
+              return e;
+            });
           } else if (limit === false && player === "computer") {
             coordArr = [];
             i = shipArr[0]["length"];
@@ -97,6 +106,12 @@ const gameboard = (player, ship, action, coord) => {
             alert("Ships can't leave grid");
             coordArr = [];
             i = shipArr[0]["length"];
+            shipMenuList.map(e => {
+              if (e.textContent === shipArr[0]["name"]) {
+                e.style.outline = "1px solid #fff";
+              }
+              return e;
+            });
           } else if (limit === false && player === "computer") {
             coordArr = [];
             i = shipArr[0]["length"];
@@ -121,6 +136,12 @@ const gameboard = (player, ship, action, coord) => {
       //if any booleans are true, send alert
       } else if (numb !== 0 && player === "human") {
         alert("Ships can't overlap");
+        shipMenuList.map(e => {
+          if (e.textContent === shipArr[0]["name"]) {
+            return e.style.outline = "1px solid #fff";
+          }
+          return e;
+        });
       };
       //visually take squares for player only
       shipArr[0]["coords"].map(e => {
@@ -130,45 +151,6 @@ const gameboard = (player, ship, action, coord) => {
     }
 
   }
-  
-  // x = A-E; y = 1-5
-  // x left/right (letters), y up/down (numbers)
-
-
-  /*
-  shipArr[0]["coords"].map(e => {
-      const squares = document.querySelectorAll(`#${e}`);
-      return squares.map(e => {
-        return squares.style.background = "green";
-      })
-    })
-
-
-  Gameboards should have a receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
-
-  Gameboards should keep track of missed attacks so they can display them properly.
-
-  Gameboards should be able to report whether or not all of their ships have been sunk.
-  */
-
-
-  return shipList[0];
 }
 
 export default gameboard;
-
-
-
-
-/**Create Gameboard factory.
- * 
-Note that we have not yet created any User Interface. We should know our code is coming together by running the tests. You shouldn’t be relying on console.logs or DOM methods to make sure your code is doing what you expect it to.
-
-Gameboards should be able to place ships at specific coordinates by calling the ship factory function.
-
-Gameboards should have a receiveAttack function that takes a pair of coordinates, determines whether or not the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot.
-
-Gameboards should keep track of missed attacks so they can display them properly.
-
-Gameboards should be able to report whether or not all of their ships have been sunk. 
-*/

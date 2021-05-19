@@ -40,9 +40,12 @@ function App() {
     if (shipContList) {
       shipContList.map(e => {
         return e.addEventListener("click", () => {
+          shipContList.map(a => {
+            a.style.outline = "1px solid #fff";
+            return a;
+          });
           nameShip(e);
-          e.style.background = "#929292";
-          e.style.color = "#616161";
+          e.style.outline = "1px solid #0f0";
         });
       })
     }
