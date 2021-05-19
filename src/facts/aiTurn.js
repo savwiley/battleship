@@ -17,7 +17,6 @@ const aiTurn = () => {
       }
     }
   };
-
   //^^ alert only shows "Already struck here"
 
   //selects square only from playerGrid
@@ -28,7 +27,6 @@ const aiTurn = () => {
   });
 
   if (square.className === "square placed" || square.className === "square") {
-    console.log(square.className);
     let ship;
     let hit = "missed";
     if (square.className === "square placed") {

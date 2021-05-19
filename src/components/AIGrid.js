@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import shipList from "../data/enemyShipList.json";
 import gameboard from "../facts/gameboard.js";
 import aiTurn from "../facts/aiTurn.js";
-//import checkCoord from "../facts/checkCoord.js";
 
 const AIGrid = () => {
   const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
@@ -66,17 +65,6 @@ const AIGrid = () => {
       });
     };
   });
-
-  /**enemyList.map(e => {
-      for (let i = 0; i < e.length; i++) {
-        aiTakenCoords.push(e.coords[i]);
-      }
-      return aiTakenCoords;
-    });
-    aiTakenCoords.map(e => 
-      e === coord ? check = true : null
-    ); */
-
 
   return(
     <div className="grid aiGrid">

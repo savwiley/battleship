@@ -1,10 +1,11 @@
 import React from "react";
 import gameboard from "./facts/gameboard.js";
 import enShipList from "./data/enemyShipList.json";
+import Header from "./components/Header.js";
 import PlayerGrid from "./components/PlayerGrid.js";
 import AIGrid from "./components/AIGrid.js";
 
-//this file will be for actually playing the game
+//this file is for actually playing the game
 
 const Game = () => {
   const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
@@ -38,26 +39,15 @@ const Game = () => {
     }
   };
 
-
   //AI places ships
   while (enShipList[4]["coords"].length !== 2) {
     gameboard("computer", getShip(), getDirection(), getCoord());
   }
 
-
-
-  /**
-   * shipList.map(e => {
-      for (let i = 0; i < e.length; i++) {
-        plTakenCoords.push(e.coords[i]);
-      }
-      return plTakenCoords;
-    });
-   */
-
-
   return (
     <>
+      <Header />
+
       <PlayerGrid />
 
       <AIGrid />
@@ -66,7 +56,3 @@ const Game = () => {
 };
 
 export default Game;
-
-/**
- * Make sure the coordinates that the player put in for each ship in "App.js" is on the player's board and the AI's ship placement is randomized without going over any previously taken squares.
- */
