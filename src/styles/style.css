@@ -35,6 +35,23 @@ body {
   cursor: default;
 }
 
+.credit {
+  font-size: 50px;
+  text-shadow: none;
+  font-variant: small-caps;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  color: var(--gray) !important;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.credit:hover {
+  color: var(--green) !important;
+}
+
 /* HOME PAGE */
 
 .App {
@@ -98,7 +115,7 @@ body {
   float: left;
   width: 38vw;
   height: 38vw;
-  margin-left: 10vw;
+  margin-left: 8vw;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   grid-gap: 4px;
@@ -119,7 +136,7 @@ body {
   background: #000;
 }
 .square:hover {
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.7));
+  background: radial-gradient(circle at center, var(--green), transparent);
 }
 
 .aiGrid .square {
@@ -136,7 +153,7 @@ body {
   background: #000;
 }
 .aiGrid .placed:hover {
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.7));
+  background: radial-gradient(circle at center, var(--green), transparent);
 }
 .missed, .missed:hover {
   background: #ffffff;
