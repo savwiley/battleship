@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
 
 :root {
   --dark: #242424;
@@ -12,8 +12,8 @@
 
   --gray: #dddddd;
 
-  --headerFont: 'Black Ops One', sans-serif;
-  --defaultFont: 'Times New Roman', Times, serif;
+  --headerFont: "Black Ops One", sans-serif;
+  --defaultFont: "Times New Roman", Times, serif;
 }
 
 body {
@@ -31,9 +31,7 @@ body {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #000;
   letter-spacing: 2px;
-  text-shadow: 1px 1px 0px #000, 
-    2px 2px 0px #000, 
-    3px 3px 0px #000;
+  text-shadow: 1px 1px 0px #000, 2px 2px 0px #000, 3px 3px 0px #000;
   cursor: default;
 }
 
@@ -88,7 +86,8 @@ body {
 .directionBtn {
   width: 250px;
 }
-.directionBtn, .playBtn {
+.directionBtn,
+.playBtn {
   font-family: var(--defaultFont);
   font-size: 20px;
   font-variant: small-caps;
@@ -105,7 +104,8 @@ body {
   text-decoration: none;
   color: #000;
 }
-.directionBtn:hover, .playBtn:hover {
+.directionBtn:hover,
+.playBtn:hover {
   background: #000;
   color: #fff;
 }
@@ -143,7 +143,8 @@ body {
   text-align: center;
   cursor: default;
 }
-#playerName, #compName {
+#playerName,
+#compName {
   width: 100%;
 }
 
@@ -189,7 +190,8 @@ https://icons8.com/wp-content/uploads/2020/07/water-texture-miracle.jpg
 
 /* CHANGED SQUARES */
 
-.placed, .placed:hover {
+.placed,
+.placed:hover {
   background: #666666;
 }
 .aiGrid .placed {
@@ -198,16 +200,23 @@ https://icons8.com/wp-content/uploads/2020/07/water-texture-miracle.jpg
 .aiGrid .placed:hover {
   background: radial-gradient(circle at center, var(--green), transparent);
 }
-.missed, .missed:hover {
+.missed,
+.missed:hover {
   background: #ffffff;
   border-radius: 50px;
 }
-.attacked, .attacked:hover, .aiGrid .attacked, .aiGrid .attacked:hover {
+.attacked,
+.attacked:hover,
+.aiGrid .attacked,
+.aiGrid .attacked:hover {
   background: #f00;
   border-radius: 50px;
   color: #f00;
 }
-.sunk, .sunk:hover, .aiGrid .sunk, .aiGrid .sunk:hover {
+.sunk,
+.sunk:hover,
+.aiGrid .sunk,
+.aiGrid .sunk:hover {
   background: #5a0000;
   color: #5a0000;
 }
