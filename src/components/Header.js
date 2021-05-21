@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div className="header">
       Battleship
-      
+
       <a href="https://github.com/savwiley/battleship" className="credit">
         github
       </a>
