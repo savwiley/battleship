@@ -43,6 +43,60 @@ const Ships = (player, ship, mark) => {
       return square.classList.toggle("sunk");
     });
   };
+
+
+  //determine if there's a winner yet
+  //remember that player is by board, not who's taking the move
+  if (player === "human") {
+    let humanWin = 0;
+    for (let i = 0; i < shipList.length; i++) {
+      if (shipList[i]["sunk"] === false) {
+        i = shipList.length;
+        humanWin = 0;
+      } else {
+        humanWin++;
+      }
+    }
+    if (humanWin !== 0) {
+      alert("You lost!");
+    }
+  };
+  if (player === "computer") {
+    let compWin = 0;
+    for (let i = 0; i < enemyShipList.length; i++) {
+      if (enemyShipList[i]["sunk"] === false) {
+        i = enemyShipList.length;
+        compWin = 0;
+      } else {
+        compWin++;
+      }
+    }
+    if (compWin !== 0) {
+      alert("You won!");
+    }
+  };
+
+  /**
+   * const getShip = () => {
+    for (let i = 0; i < enShipList.length; i++) {
+      if (enShipList[i]["coords"].length !== enShipList[i]["length"]) {
+        const shipArr = enShipList[i];
+        i = enShipList.length;
+        return shipArr["name"];
+      }
+    }
+  };
+
+    for (let i = 0; i < enemyShipList.length; i++) {
+      if (enemyShipList[i]["sunk"] === false) {
+        i = enemyShipList.length;
+      } else if {
+
+      }
+    }
+   */
+
+
 }
 
 export default Ships;
