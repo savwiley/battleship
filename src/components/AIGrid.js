@@ -47,20 +47,31 @@ const AIGrid = () => {
     if (grid && square) {
       square.map(e => {
         return e.addEventListener("click", () => {
-          let numb = 0;
-          let hit = "missed";
-          if (e.className === "square placed") {
-            hit = "attack";
-          }
+          let compWin = 0;
           for (let i = 0; i < shipList.length; i++) {
-            shipList[i]["coords"].map(x => {
-              if (x === e.id) {
-                numb = i;
-              }
-              return numb;
-            })
-          };
-          return attackSquare(e, shipList[numb]["name"], hit);
+            if (shipList[i]["sunk"] === false) {
+              i = shipList.length;
+              compWin = 0;
+            } else {
+              compWin++;
+            }
+          }
+          if (compWin === 0) {
+            let numb = 0;
+            let hit = "missed";
+            if (e.className === "square placed") {
+              hit = "attack";
+            }
+            for (let i = 0; i < shipList.length; i++) {
+              shipList[i]["coords"].map(x => {
+                if (x === e.id) {
+                  numb = i;
+                }
+                return numb;
+              })
+            };
+            return attackSquare(e, shipList[numb]["name"], hit);
+          }
         });
       });
     };
