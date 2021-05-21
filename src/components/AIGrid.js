@@ -4,12 +4,12 @@ import gameboard from "../facts/gameboard.js";
 import aiTurn from "../facts/aiTurn.js";
 
 const AIGrid = () => {
-  const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
+  const alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
   //this logic places computer ships on computer grid when game starts
   const takenCoords = [];
 
-  shipList.map(e => {
+  shipList.map((e) => {
     for (let i = 0; i < e.length; i++) {
       takenCoords.push(e.coords[i]);
     }
@@ -33,19 +33,19 @@ const AIGrid = () => {
     //selects squares only on aiGrid
     const grid = Array.from(document.getElementsByClassName("grid aiGrid"));
     let square;
-    grid.map(e => {
-      return square = Array.from(e.querySelectorAll(".square"));
+    grid.map((e) => {
+      return (square = Array.from(e.querySelectorAll(".square")));
     });
 
     const attackSquare = (e, ship, move) => {
       if (e.className === "square" || e.className === "square placed") {
         aiTurn();
-      };
+      }
       gameboard("computer", ship, move, e.id);
     };
 
     if (grid && square) {
-      square.map(e => {
+      square.map((e) => {
         return e.addEventListener("click", () => {
           let compWin = 0;
           for (let i = 0; i < shipList.length; i++) {
@@ -63,34 +63,35 @@ const AIGrid = () => {
               hit = "attack";
             }
             for (let i = 0; i < shipList.length; i++) {
-              shipList[i]["coords"].map(x => {
+              shipList[i]["coords"].map((x) => {
                 if (x === e.id) {
                   numb = i;
                 }
                 return numb;
-              })
-            };
+              });
+            }
             return attackSquare(e, shipList[numb]["name"], hit);
           }
         });
       });
-    };
+    }
   });
 
-  return(
+  return (
     <div className="grid aiGrid">
-      {alpha.map(i =>
-        alpha.map(e =>
-          <div 
+      {alpha.map((i) =>
+        alpha.map((e) => (
+          <div
             className="square"
             id={e + alpha.indexOf(i)}
-            key={e + alpha.indexOf(i)}>
-              {e + alpha.indexOf(i)}
+            key={e + alpha.indexOf(i)}
+          >
+            {e + alpha.indexOf(i)}
           </div>
-        )
+        ))
       )}
     </div>
-  )
+  );
 };
 
 export default AIGrid;
