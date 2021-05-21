@@ -4,6 +4,7 @@ import enShipList from "./data/enemyShipList.json";
 import Header from "./components/Header.js";
 import PlayerGrid from "./components/PlayerGrid.js";
 import AIGrid from "./components/AIGrid.js";
+import InfoBoard from "./components/InfoBoard.js";
 
 //this file is for actually playing the game
 
@@ -47,6 +48,13 @@ const Game = () => {
   return (
     <>
       <Header />
+
+      <InfoBoard />
+
+      <div className="names">
+        <div id="playerName">your board</div>
+        <div id="compName">computer board</div>
+      </div>
 
       <PlayerGrid />
 

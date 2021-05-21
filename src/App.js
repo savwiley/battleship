@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Grid from "./components/Grid.js";
 import Header from "./components/Header.js";
+import InfoBoard from "./components/InfoBoard.js";
 
 //this file is for placing ships
 
@@ -55,6 +56,8 @@ function App() {
     <div className="App">
 
       <Header />
+
+      <InfoBoard />
       
       <Grid place={place} ship={ship} />
 
