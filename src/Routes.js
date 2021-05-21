@@ -4,15 +4,14 @@ import App from "./App.js";
 import Game from "./Game.js";
 
 const Routes = () => {
-
   return (
     <HashRouter basename="/">
       <Switch>
-        <Route exact path ="/" render={() => <App />} />
+        <Route exact path="/" render={() => <App />} />
         <Route exact path="/Game" render={() => <Game />} />
       </Switch>
     </HashRouter>
-  )
-}
+  );
+};
 
 export default Routes;

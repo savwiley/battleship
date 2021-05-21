@@ -22,13 +22,12 @@ function App() {
         dirBtn.textContent = "Place Ships Vertically";
         place.current = "placeH";
       }
-    }
+    };
 
     if (dirBtn) {
       dirBtn.addEventListener("click", direction);
     }
   });
-
 
   //ship selection logic
   useEffect(() => {
@@ -36,29 +35,28 @@ function App() {
 
     const nameShip = (e) => {
       ship.current = e.textContent;
-    }
+    };
 
     if (shipContList) {
-      shipContList.map(e => {
+      shipContList.map((e) => {
         return e.addEventListener("click", () => {
-          shipContList.map(a => {
+          shipContList.map((a) => {
             a.style.outline = "1px solid #fff";
             return a;
           });
           nameShip(e);
           e.style.outline = "1px solid #0f0";
         });
-      })
+      });
     }
   });
 
   return (
     <div className="App">
-
       <Header />
 
       <InfoBoard />
-      
+
       <Grid place={place} ship={ship} />
 
       <div className="menu">
@@ -73,12 +71,9 @@ function App() {
         </div>
 
         <Link to="/Game">
-          <div className="playBtn">
-            Play Game!
-          </div>
+          <div className="playBtn">Play Game!</div>
         </Link>
       </div>
-    
     </div>
   );
 }
@@ -87,9 +82,9 @@ export default App;
 
 /**
  * https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/battleship
- * 
- * 
- * 
+ *
+ *
+ *
  * TODOS
  * -css
  * -license

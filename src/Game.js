@@ -9,7 +9,7 @@ import InfoBoard from "./components/InfoBoard.js";
 //this file is for actually playing the game
 
 const Game = () => {
-  const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
+  const alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
   //gets a random coord
   const getCoord = () => {
@@ -60,7 +60,7 @@ const Game = () => {
 
       <AIGrid />
     </>
-  )
+  );
 };
 
 export default Game;
