@@ -37,6 +37,9 @@ const gameboard = (player, ship, action, coord) => {
   //grabs the placement menu items
   const shipMenuList = Array.from(document.querySelectorAll(".ship"));
 
+  //grabs the messenger
+  const messenger = document.querySelector(".messenger");
+
   //prevents ships from leaving the grid
   function range(numb) {
     return numb < 0 ? false : (numb > 9 ? false : true)
@@ -46,7 +49,7 @@ const gameboard = (player, ship, action, coord) => {
     if (square.classList.value === "square missed"
       || square.classList.value === "square placed attacked"
       || square.classList.value === "square placed attacked sunk") {
-      alert("Already struck here!");
+      messenger.textContent = "Already struck here!";
     } else if (square) {
       square.classList.toggle("missed");
     }
@@ -77,7 +80,7 @@ const gameboard = (player, ship, action, coord) => {
             coordArr.push(yCoord);
             coArr[1]++;
           } else if (limit === false && player === "human") {
-            alert("Ships can't leave grid");
+            messenger.textContent = "Ships can't leave grid!";
             coordArr = [];
             i = shipArr[0]["length"];
             shipMenuList.map(e => {
@@ -103,7 +106,7 @@ const gameboard = (player, ship, action, coord) => {
             coordArr.push(xCoord);
             index++;
           } else if (limit === false && player === "human") {
-            alert("Ships can't leave grid");
+            messenger.textContent = "Ships can't leave grid!";
             coordArr = [];
             i = shipArr[0]["length"];
             shipMenuList.map(e => {
@@ -135,7 +138,7 @@ const gameboard = (player, ship, action, coord) => {
         })
       //if any booleans are true, send alert
       } else if (numb !== 0 && player === "human") {
-        alert("Ships can't overlap");
+        messenger.textContent = "Ships can't overlap!";
         shipMenuList.map(e => {
           if (e.textContent === shipArr[0]["name"]) {
             return e.style.outline = "1px solid #fff";

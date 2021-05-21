@@ -13,6 +13,9 @@ const Ships = (player, ship, mark) => {
     shipArr = enemyShipList.filter((e) => e.name === ship);
   };
 
+  //grabs the messenger
+  const messenger = document.querySelector(".messenger");
+
   //determines which target was hit and removes it
   const hit = shipArr[0]["targets"].indexOf(mark + 1);
   shipArr[0]["targets"].splice(hit, 1);
@@ -21,9 +24,9 @@ const Ships = (player, ship, mark) => {
   if (shipArr[0]["targets"].length === 0) {
     shipArr[0]["sunk"] = true;
     if (player === "human") {
-      alert(`Your ${shipArr[0]["name"]} was sunk!`)
+      messenger.textContent = `Your ${shipArr[0]["name"]} was sunk!`;
     } else if (player === "computer") {
-      alert(`You sunk their ${shipArr[0]["name"]}!`)
+      messenger.textContent = `You sunk their ${shipArr[0]["name"]}!`;
     };
     shipArr[0]["coords"].map(e => {
       //grabs square dom of coord from each board
@@ -58,7 +61,7 @@ const Ships = (player, ship, mark) => {
       }
     }
     if (humanWin !== 0) {
-      alert("You lost!");
+      messenger.textContent = "You lost!";
     }
   };
   if (player === "computer") {
@@ -72,30 +75,9 @@ const Ships = (player, ship, mark) => {
       }
     }
     if (compWin !== 0) {
-      alert("You won!");
+      messenger.textContent = "You won!";
     }
   };
-
-  /**
-   * const getShip = () => {
-    for (let i = 0; i < enShipList.length; i++) {
-      if (enShipList[i]["coords"].length !== enShipList[i]["length"]) {
-        const shipArr = enShipList[i];
-        i = enShipList.length;
-        return shipArr["name"];
-      }
-    }
-  };
-
-    for (let i = 0; i < enemyShipList.length; i++) {
-      if (enemyShipList[i]["sunk"] === false) {
-        i = enemyShipList.length;
-      } else if {
-
-      }
-    }
-   */
-
 
 }
 

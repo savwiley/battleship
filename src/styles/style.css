@@ -2,6 +2,8 @@
 
 :root {
   --dark: #242424;
+  --ltDark: #4e4e4e;
+  --dDark: #131313;
 
   --blue: #00c3ff;
   --dBlue: #026b8b;
@@ -36,14 +38,17 @@ body {
 }
 
 .credit {
-  font-size: 50px;
+  display: block;
+  width: fit-content;
+  height: 25px;
+  margin: auto;
+  position: relative;
+  bottom: 30px;
+  font-size: 40px;
   text-shadow: none;
   font-variant: small-caps;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #000;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
   color: var(--gray) !important;
   text-decoration: none;
   transition: all 0.2s;
@@ -108,6 +113,40 @@ body {
   text-shadow: 1px 1px 0px var(--blue), -1px 1px 0px red;
 }
 
+/* INFO BOARD */
+
+.infoBoard {
+  margin: 0 auto 10px;
+  width: 90vw;
+  cursor: default;
+}
+
+.messenger {
+  background: var(--dDark);
+  border: 1px solid var(--ltDark);
+  color: var(--gray);
+  margin: auto;
+  width: 60%;
+  padding: 10px 10px;
+  font-size: 2vw;
+  text-align: center;
+}
+
+.names {
+  margin: 0 auto 10px;
+  width: 90vw;
+  font-family: var(--headerFont);
+  color: var(--gray);
+  display: flex;
+  font-variant: small-caps;
+  font-size: 3vw;
+  text-align: center;
+  cursor: default;
+}
+#playerName, #compName {
+  width: 100%;
+}
+
 /* GRID */
 
 .grid {
@@ -116,6 +155,7 @@ body {
   width: 38vw;
   height: 38vw;
   margin-left: 8vw;
+  margin-bottom: 5vh;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   grid-gap: 4px;
@@ -126,14 +166,17 @@ body {
   font-weight: bold;
 }
 
-/* https://icons8.com/wp-content/uploads/2020/07/water-texture-miracle.jpg */
+/* Old grid bg
+https://icons8.com/wp-content/uploads/2020/07/water-texture-miracle.jpg 
+*/
 
 .square {
   border: 1px solid var(--blue);
   box-shadow: 2px 2px 4px var(--blue), -2px -2px 4px var(--blue);
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #000;
+  font-size: 1.5vw;
 }
 .square:hover {
   background: radial-gradient(circle at center, var(--green), transparent);

@@ -17,7 +17,6 @@ const aiTurn = () => {
       }
     }
   };
-  //^^ alert only shows "Already struck here"
 
   //selects square only from playerGrid
   const grid = Array.from(document.getElementsByClassName("grid playerGrid"));
@@ -25,6 +24,9 @@ const aiTurn = () => {
   grid.map(e => {
     return square = e.querySelector(`#${getCoord()}`);
   });
+
+  //grabs the messenger
+  const messenger = document.querySelector(".messenger");
 
   if (square.className === "square placed" || square.className === "square") {
     let ship;
@@ -40,8 +42,12 @@ const aiTurn = () => {
         return ship;
       })
     };
-
     gameboard("human", ship, hit, square.id);
+    if (hit === "missed") {
+      messenger.textContent = `Computer attacks ${square.id}. They missed!`;
+    } else if (hit === "attack") {
+      messenger.textContent = `Computer attacks ${square.id}. It's a hit!`;
+    }
   } else {
     aiTurn();
   }
