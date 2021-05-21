@@ -2,7 +2,7 @@ import shipList from "../data/shipList.json";
 import gameboard from "./gameboard.js";
 
 const aiTurn = () => {
-  const alpha = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" ];
+  const alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
   //gets a random coord
   const getCoord = () => {
@@ -21,8 +21,8 @@ const aiTurn = () => {
   //selects square only from playerGrid
   const grid = Array.from(document.getElementsByClassName("grid playerGrid"));
   let square;
-  grid.map(e => {
-    return square = e.querySelector(`#${getCoord()}`);
+  grid.map((e) => {
+    return (square = e.querySelector(`#${getCoord()}`));
   });
 
   //grabs the messenger
@@ -35,13 +35,13 @@ const aiTurn = () => {
       hit = "attack";
     }
     for (let i = 0; i < shipList.length; i++) {
-      shipList[i]["coords"].map(x => {
+      shipList[i]["coords"].map((x) => {
         if (x === square.id) {
           ship = shipList[i]["name"];
         }
         return ship;
-      })
-    };
+      });
+    }
     gameboard("human", ship, hit, square.id);
     if (hit === "missed") {
       messenger.textContent = `Computer attacks ${square.id}. They missed!`;
@@ -51,6 +51,6 @@ const aiTurn = () => {
   } else {
     aiTurn();
   }
-}
+};
 
 export default aiTurn;

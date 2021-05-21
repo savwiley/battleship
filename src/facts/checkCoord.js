@@ -10,29 +10,25 @@ const checkCoord = (player, coord) => {
 
   //checks if the square is a ship
   if (player === "human") {
-    shipList.map(e => {
+    shipList.map((e) => {
       for (let i = 0; i < e.length; i++) {
         plTakenCoords.push(e.coords[i]);
       }
       return plTakenCoords;
     });
-    plTakenCoords.map(e => 
-      e === coord ? check = true : null
-    )
+    plTakenCoords.map((e) => (e === coord ? (check = true) : null));
   } else if (player === "computer") {
-    enemyList.map(e => {
+    enemyList.map((e) => {
       for (let i = 0; i < e.length; i++) {
         aiTakenCoords.push(e.coords[i]);
       }
       return aiTakenCoords;
     });
-    aiTakenCoords.map(e => 
-      e === coord ? check = true : null
-    );
-  };
+    aiTakenCoords.map((e) => (e === coord ? (check = true) : null));
+  }
 
   return check;
   //check returns false if coord isn't taken up or true if it is
-}
+};
 
 export default checkCoord;

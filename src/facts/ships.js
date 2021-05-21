@@ -4,14 +4,13 @@ import enemyShipList from "../data/enemyShipList.json";
 //this file changes the ship objects in the data folder
 
 const Ships = (player, ship, mark) => {
-
   //grabs the ship
   let shipArr;
   if (player === "human") {
     shipArr = shipList.filter((e) => e.name === ship);
   } else if (player === "computer") {
     shipArr = enemyShipList.filter((e) => e.name === ship);
-  };
+  }
 
   //grabs the messenger
   const messenger = document.querySelector(".messenger");
@@ -27,26 +26,25 @@ const Ships = (player, ship, mark) => {
       messenger.textContent = `Your ${shipArr[0]["name"]} was sunk!`;
     } else if (player === "computer") {
       messenger.textContent = `You sunk their ${shipArr[0]["name"]}!`;
-    };
-    shipArr[0]["coords"].map(e => {
+    }
+    shipArr[0]["coords"].map((e) => {
       //grabs square dom of coord from each board
       let square;
       let grid;
       if (player === "human") {
         grid = Array.from(document.getElementsByClassName("grid playerGrid"));
-        grid.map(x => {
-          return square = x.querySelector(`#${e}`);
+        grid.map((x) => {
+          return (square = x.querySelector(`#${e}`));
         });
       } else if (player === "computer") {
         grid = Array.from(document.getElementsByClassName("grid aiGrid"));
-        grid.map(x => {
-          return square = x.querySelector(`#${e}`);
+        grid.map((x) => {
+          return (square = x.querySelector(`#${e}`));
         });
-      };
+      }
       return square.classList.toggle("sunk");
     });
-  };
-
+  }
 
   //determine if there's a winner yet
   //remember that player is by board, not who's taking the move
@@ -63,7 +61,7 @@ const Ships = (player, ship, mark) => {
     if (humanWin !== 0) {
       messenger.textContent = "You lost!";
     }
-  };
+  }
   if (player === "computer") {
     let compWin = 0;
     for (let i = 0; i < enemyShipList.length; i++) {
@@ -77,8 +75,7 @@ const Ships = (player, ship, mark) => {
     if (compWin !== 0) {
       messenger.textContent = "You won!";
     }
-  };
-
-}
+  }
+};
 
 export default Ships;
