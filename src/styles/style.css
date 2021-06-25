@@ -128,7 +128,7 @@ body {
   margin: auto;
   width: 60%;
   padding: 10px 10px;
-  font-size: 2vw;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -149,6 +149,20 @@ body {
 }
 
 /* GRID */
+
+.aiGrid {
+  position: relative;
+  z-index: 1;
+}
+
+.cover {
+  position: relative;
+  width: 38vw;
+  height: 38vw;
+  background: transparent;
+  margin-left: 54vw;
+  z-index: 0;
+}
 
 .grid {
   display: grid;
