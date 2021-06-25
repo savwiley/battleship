@@ -149,7 +149,10 @@ const gameboard = (player, ship, action, coord) => {
       //visually take squares for player only
       shipArr[0]["coords"].map((e) => {
         const squares = document.querySelectorAll(`#${e}`);
-        return squares[0].classList.toggle("placed");
+        if (squares[0]) {
+          return squares[0].classList.toggle("placed");
+        }
+        return null;
       });
     }
   }
