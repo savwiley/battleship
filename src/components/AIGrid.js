@@ -38,10 +38,31 @@ const AIGrid = () => {
     });
 
     const attackSquare = (e, ship, move) => {
-      if (e.className === "square" || e.className === "square placed") {
-        aiTurn();
-      }
+      const cover = document.querySelector(".cover");
+      const message = document.querySelector(".messenger");
       gameboard("computer", ship, move, e.id);
+
+      let compWin = 0;
+      for (let i = 0; i < shipList.length; i++) {
+        if (shipList[i]["sunk"] === false) {
+          i = shipList.length;
+          compWin = 0;
+        } else {
+          compWin++;
+        }
+      }
+
+      if (
+        (e.className === "square" && cover) ||
+        (e.className === "square placed" && cover) ||
+        compWin === 0
+      ) {
+        console.log(cover);
+        cover.style.zIndex = "2";
+        cover.style.background = "rgba(0,0,0,0.2)";
+        message.textContent = "The Computer is thinking...";
+        setTimeout(aiTurn, 1000);
+      }
     };
 
     if (grid && square) {
@@ -63,6 +84,7 @@ const AIGrid = () => {
               hit = "attack";
             }
             for (let i = 0; i < shipList.length; i++) {
+              // eslint-disable-next-line
               shipList[i]["coords"].map((x) => {
                 if (x === e.id) {
                   numb = i;
@@ -78,19 +100,22 @@ const AIGrid = () => {
   });
 
   return (
-    <div className="grid aiGrid">
-      {alpha.map((i) =>
-        alpha.map((e) => (
-          <div
-            className="square"
-            id={e + alpha.indexOf(i)}
-            key={e + alpha.indexOf(i)}
-          >
-            {e + alpha.indexOf(i)}
-          </div>
-        ))
-      )}
-    </div>
+    <>
+      <div className="grid aiGrid">
+        {alpha.map((i) =>
+          alpha.map((e) => (
+            <div
+              className="square"
+              id={e + alpha.indexOf(i)}
+              key={e + alpha.indexOf(i)}
+            >
+              {e + alpha.indexOf(i)}
+            </div>
+          ))
+        )}
+      </div>
+      <div className="cover"></div>
+    </>
   );
 };
 

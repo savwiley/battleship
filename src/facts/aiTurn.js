@@ -4,6 +4,10 @@ import gameboard from "./gameboard.js";
 const aiTurn = () => {
   const alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
+  //grabs the doms
+  const messenger = document.querySelector(".messenger");
+  const cover = document.querySelector(".cover");
+
   //gets a random coord
   const getCoord = () => {
     try {
@@ -25,9 +29,6 @@ const aiTurn = () => {
     return (square = e.querySelector(`#${getCoord()}`));
   });
 
-  //grabs the messenger
-  const messenger = document.querySelector(".messenger");
-
   if (square.className === "square placed" || square.className === "square") {
     let ship;
     let hit = "missed";
@@ -35,6 +36,7 @@ const aiTurn = () => {
       hit = "attack";
     }
     for (let i = 0; i < shipList.length; i++) {
+      // eslint-disable-next-line
       shipList[i]["coords"].map((x) => {
         if (x === square.id) {
           ship = shipList[i]["name"];
@@ -51,6 +53,9 @@ const aiTurn = () => {
   } else {
     aiTurn();
   }
+
+  cover.style.zIndex = "0";
+  cover.style.background = "transparent";
 };
 
 export default aiTurn;
