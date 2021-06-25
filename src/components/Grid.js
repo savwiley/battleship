@@ -20,9 +20,6 @@ const Grid = (props) => {
         alert("Please choose a ship!");
       } else {
         gameboard("human", ship.current, place.current, e.id);
-        //only dims ship button after ship is placed
-        //only shows play button after ALL ships are placed
-        //there has got to be a better way to do this
         shipMenuList.map((e) => {
           if (e.textContent === ship.current) {
             shipList.map((a) => {
