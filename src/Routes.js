@@ -4,6 +4,7 @@ import App from "./App.js";
 import Game from "./Game.js";
 
 const Routes = () => {
+
   return (
     <HashRouter basename="/">
       <Switch>
