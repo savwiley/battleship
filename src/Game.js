@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import gameboard from "./facts/gameboard.js";
+import shipList from "./data/shipList.json";
 import enShipList from "./data/enemyShipList.json";
 import Header from "./components/Header.js";
 import PlayerGrid from "./components/PlayerGrid.js";
@@ -10,6 +12,16 @@ import InfoBoard from "./components/InfoBoard.js";
 
 const Game = () => {
   const alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+
+  useEffect(() => {
+    const back = document.querySelector(".back");
+    //if there are no ships on player board, show back btn
+    if (shipList[0]["coords"].length === 0) {
+      if (back) {
+        back.style.display = "block";
+      }
+    }
+  })
 
   //gets a random coord
   const getCoord = () => {
@@ -59,6 +71,15 @@ const Game = () => {
       <PlayerGrid />
 
       <AIGrid />
+
+      <div className="back">
+        <div className="backInner">
+          Something went wrong!
+          <Link to="/">
+            GO BACK
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
