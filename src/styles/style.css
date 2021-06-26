@@ -148,6 +148,46 @@ body {
   width: 100%;
 }
 
+.back {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 5;
+}
+.backInner {
+  background: var(--gray);
+  width: fit-content;
+  margin: auto;
+  margin-top: 30vh;
+  font-size: 40px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 8px
+  #000;
+  font-family: var(--defaultFont);
+  cursor: default;
+}
+.backInner a {
+  font-size: 55px;
+  width: fit-content;
+  margin: auto;
+  display: block;
+  color: var(--green);
+  text-decoration: none;
+  font-family: var(--headerFont);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000;
+  text-shadow: 1px 1px 0px #000, 2px 2px 0px #000, 3px 3px 0px #000;
+}
+.backInner a:hover {
+  color: green;
+}
+
 /* GRID */
 
 .aiGrid {
